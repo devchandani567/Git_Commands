@@ -1,0 +1,371 @@
+Links:
+
+My Git Hub:
+https://github.com/discover-devops?tab=repositories
+
+GitBash:
+https://git-scm.com/downloads
+
+
+======================
+
+June 2nd GIT Labs:
+  -------------------
+
+What is Version Control?
+Types of Version Control System
+Introduction to Git
+Why Git
+Git Lifecycle
+Common Git Commands
+Working with Branches in Git
+Merging Branches
+Resolving Merge Conflicts
+Git HUB
+Git Internals
+Local VCS and Central VCS: Labs and commands
+===================================================
+
+
+A Version Control System (VCS) is a tool that helps manage changes to source code or files over time. 
+It allows multiple developers to work on a project simultaneously without overwriting each other’s work. 
+VCS tracks the history of changes, enabling the restoration of earlier versions, comparison of changes, 
+and collaboration.
+
+Types of VCS
+=================
+
+1: Git
+2: Subversion 
+3: Mercurial
+
+
+Install Git
+==================
+
+Installation
+
+apt get update
+apt-get install git
+git --version
+
+
+Configuring Git
+
+git config --global user.name "devops"
+git config --global user.email "devops@gmail.com"
+git config --global core.editor "vi"
+
+git config --list
+
+mkdir my_project
+cd my_project
+ls
+  117  clear
+  118  PS1="GitLab $ "
+  119  pwd
+  120  clear
+  121  history
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone             Clone a repository into a new directory
+   init              Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add               Add file contents to the index
+   mv                Move or rename a file, a directory, or a symlink
+   restore           Restore working tree files
+   rm                Remove files from the working tree and from the index
+   sparse-checkout   Initialize and modify the sparse-checkout
+
+examine the history and state (see also: git help revisions)
+   bisect            Use binary search to find the commit that introduced a bug
+   diff              Show changes between commits, commit and working tree, etc
+   grep              Print lines matching a pattern
+   log               Show commit logs
+   show              Show various types of objects
+   status            Show the working tree status
+
+grow, mark and tweak your common history
+   branch            List, create, or delete branches
+   commit            Record changes to the repository
+   merge             Join two or more development histories together
+   rebase            Reapply commits on top of another base tip
+   reset             Reset current HEAD to the specified state
+   switch            Switch branches
+   tag               Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch             Download objects and refs from another repository
+   pull              Fetch from and integrate with another repository or a local branch
+   push              Update remote refs along with associated objects
+
+
+
+all the commands of Git :
+
+$ git + verb
+
+$ git init
+
+
+GitLab $ git init
+Initialized empty Git repository in /home/kumar/my_project/.git/
+GitLab $
+
+GitLab $ touch fileA.txt
+GitLab $ ls
+fileA.txt
+GitLab $  git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        fileA.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+GitLab $
+
+GitLab $ git add fileA.txt
+GitLab $
+GitLab $ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   fileA.txt
+
+GitLab $
+
+
+
+GitLab $ git commit -m "Added fileA"
+[master (root-commit) 9b31daa] Added fileA
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 fileA.txt
+GitLab $
+
+GitLab $ git status
+On branch master
+nothing to commit, working tree clean
+GitLab $
+
+GitLab $ git log
+commit c97ab051ca37c0c8c6ebe64a9449d17ffbd5ca17 (HEAD -> master)
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 16:13:39 2024 +0000
+
+     Added Py file
+
+commit 9b31daa5ad29fa1add4a848159fa31f8b3b95cd9
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 15:40:21 2024 +0000
+
+    Added fileA
+GitLab $ git log --online
+fatal: unrecognized argument: --online
+GitLab $ git log --oneline
+c97ab05 (HEAD -> master)  Added Py file
+9b31daa Added fileA
+GitLab $
+
+
+GitLab $ vi fileA.txt
+GitLab $
+GitLab $
+GitLab $ cat fileA.txt
+This is my test data
+GitLab $ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   fileA.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+GitLab $
+
+
+*.log ----------> a.log. b.log ewrewrewrtwer.log
+
+
+commit 264b8197a053b87ce431d7eb79c770b495644298 (HEAD -> master)
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 16:33:41 2024 +0000
+
+     Adde  all the log files
+
+commit eaa88a20323aa142c6580f3cb1a09f90853f42d4
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 16:31:53 2024 +0000
+
+     Adde few more log files in gitignore
+
+commit 845429d3b495df34d86cbc1e41d36874ae57c81b
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 16:30:03 2024 +0000
+
+    Added .gitignore
+
+commit 7bd0e180982f1204c36a24b2d1eb10dbcb87c504
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 16:19:53 2024 +0000
+
+    Modified the fileA
+
+commit c97ab051ca37c0c8c6ebe64a9449d17ffbd5ca17
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 16:13:39 2024 +0000
+
+     Added Py file
+
+commit 9b31daa5ad29fa1add4a848159fa31f8b3b95cd9
+Author: devops <devops@gmail.com>
+Date:   Sun Jun 2 15:40:21 2024 +0000
+
+    Added fileA
+GitLab $ git cat-file -p  264b8197a0
+tree 6c63cccfefbcd0851cb3742dba63cf1dcb58824f
+parent eaa88a20323aa142c6580f3cb1a09f90853f42d4
+author devops <devops@gmail.com> 1717346021 +0000
+committer devops <devops@gmail.com> 1717346021 +0000
+
+ Adde  all the log files
+GitLab $
+GitLab $
+GitLab $
+GitLab $
+GitLab $ git cat-file -p  6c63cccf
+100644 blob bc43126334dc4884fb574ea46c957323e4b616d4    .gitignore
+100644 blob 291a9a81789257d84840cb3da05a3ba7cd115d1b    app.py
+100644 blob e413d7b8d654727d7749d2711da0336b76ed22c6    fileA.txt
+
+
+
+kumar@MachineB:~/my_project$ git status
+On branch master
+nothing to commit, working tree clean
+kumar@MachineB:~/my_project$
+kumar@MachineB:~/my_project$
+kumar@MachineB:~/my_project$ git branch
+* master
+kumar@MachineB:~/my_project$ git branch f100 master
+kumar@MachineB:~/my_project$ git branch
+  f100
+* master
+kumar@MachineB:~/my_project$ ls
+a.log  app.py  b.log  c.log  fileA.txt  log.txt  y.log  z.log
+kumar@MachineB:~/my_project$
+kumar@MachineB:~/my_project$
+kumar@MachineB:~/my_project$ git checkout f100
+Switched to branch 'f100'
+kumar@MachineB:~/my_project$
+
+
+kumar@MachineB:~/my_project$ git merge f100 master
+Updating 264b819..a0f5197
+Fast-forward
+ b.py | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 b.py
+kumar@MachineB:~/my_project$
+
+
+Git $ git merge feature
+Merge made by the 'recursive' strategy.
+ xyz.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 xyz.txt
+Git $
+
+
+20.244.46.172
+------------------------------------------------------------
+
+git config --global user.name "devops"
+git config --global user.email "devops@gmail.com"
+git config --global core.editor "vi"
+git config --list
+
+
+
+Git $ git log
+commit 3b12dcf0f034a2b7875f463ff9fb2fd24813aeb8 (HEAD -> master)
+Author: devops <devops@gmail.com>
+Date:   Sat Jun 8 14:55:58 2024 +0000
+
+    Added 123file at master
+
+commit 4ba611859dc2322dbb9be1d65275f0ce7b8aceed
+Author: devops <devops@gmail.com>
+Date:   Sat Jun 8 14:46:47 2024 +0000
+
+    Added file in Master branch
+
+
+Git $ git log
+commit 987bcf04aef179d39a163af0a04b1efdaa4fb3d5 (HEAD -> master)
+Merge: 3b12dcf 2f96bfb
+Author: devops <devops@gmail.com>
+Date:   Sat Jun 8 14:58:25 2024 +0000
+
+    Merge branch 'feature' becasuee of 3 way merge
+
+commit 3b12dcf0f034a2b7875f463ff9fb2fd24813aeb8
+Author: devops <devops@gmail.com>
+Date:   Sat Jun 8 14:55:58 2024 +0000
+
+    Added 123file at master
+
+commit 2f96bfbcfb85e164c45ec31db857fbd30f4cfa71 (feature)
+Author: devops <devops@gmail.com>
+Date:   Sat Jun 8 14:50:21 2024 +0000
+
+    Added file in feature branch
+
+commit 4ba611859dc2322dbb9be1d65275f0ce7b8aceed
+Author: devops <devops@gmail.com>
+Date:   Sat Jun 8 14:46:47 2024 +0000
+
+    Added file in Master branch
+Git $
+
+
+git branch -M main
+git remote add origin https://github.com/discover-devops/8thJune2024.git
+git push -u origin main
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+Generate PAT 
+
+
+https://www.jenkins.io/doc/book/installing/
+--------------
+
+Installation of Jenkins:
+  ----------------------
+
+Installation of Java
+
+java -version
+sudo apt update
+sudo apt install openjdk-11-jre
+java -version
+
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+Start Jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+sudo systemctl enable jenkins
